@@ -1,0 +1,325 @@
+﻿/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+
+/* Importação de Fontes */
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@100..900&display=swap");
+
+html, body {
+    height: 100%; /* Define a altura total da página */
+    margin: 0; /* Remove a margem padrão do navegador */
+}
+
+.page-wrapper {
+    display: flex; /* Utiliza flexbox para o layout */
+    flex-direction: column; /* Alinha os filhos em uma coluna */
+    min-height: 100vh; /* Garante que a altura mínima seja igual à altura da janela */
+}
+
+.content-wrapper {
+    flex: 1; /* Permite que o elemento cresça e preencha o espaço disponível */
+}
+
+.body-content {
+    margin-top: 15px; /* Adiciona uma margem superior de 15px */
+    padding-left: 15px; /* Adiciona um padding à esquerda de 15px */
+    padding-right: 15px; /* Adiciona um padding à direita de 15px */
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.fieldPWLog {
+    max-width: 300px;   /* Dimensão da caixa do input do login e palavra-passe */
+}
+
+.fieldCatsize {
+    max-width: 200px;   /* Dimensão da caixa da categoria */
+}
+
+.fontGluten {
+    font-family: "Gluten", cursive; /* Fonte para o título do Hubdiário */
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.fontOrbitron, h2 {
+    font-family: "Orbitron", sans-serif;    /* Fonte usada para os títulos */
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.fontEncode, th {
+    font-family: "Encode Sans SC", sans-serif;  /* Fonte usada nos títulos das tabelas */
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.formcheck {
+    display: block; /* Define o elemento como um bloco, ocupando toda a largura disponível */
+    margin-top: 0.5rem; /* Adiciona uma margem superior de 0.5 rem */
+}
+
+.category-link {
+    color: #6c757d; /* Define a cor inicial do link como text-muted (cinza) */
+    transition: color 0.3s ease, transform 0.3s ease; /* Adiciona uma transição suave de 0.3s para a cor e a transformação */
+    text-decoration: none; /* Remove a sublinhado do link */
+}
+
+    /* Estilo de hover para o link */
+    .category-link:hover {
+        color: #007bff; /* Nova cor ao passar o mouse */
+        transform: scale(1.1); /* Leve aumento ao passar o mouse */
+    }
+
+table td:first-child {
+    border-left: 1px solid #ddd; /* Borda à esquerda na primeira coluna */
+}
+
+table td:last-child {
+    border-right: 1px solid #ddd; /* Borda à direita na última coluna */
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px; /* Canto superior esquerdo arredondado */
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 10px; /* Canto superior direito arredondado */
+}
+
+.category-container {
+    display: flex; /* Utiliza flexbox para o layout */
+    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal se o conteúdo ultrapassar a largura */
+}
+
+    .category-container > div {
+        border-right: 1px solid #000; /* Adiciona uma borda direita preta */
+        padding: 0 10px; /* Adiciona um padding horizontal de 10px */
+    }
+
+        .category-container > div:last-child {
+            border-right: none; /* Remove a borda direita do último item */
+        }
+
+.categories-container {
+    overflow-x: auto; /* Adiciona uma barra de rolagem horizontal se o conteúdo ultrapassar a largura */
+    white-space: nowrap; /* Garante que o conteúdo não quebre a linha */
+    margin-bottom: 20px; /* Adiciona uma margem inferior de 20px */
+    border: 1px solid #ddd; /* Adiciona uma borda cinza clara */
+    padding: 10px; /* Adiciona um padding de 10px */
+    display: inline-flex; /* Utiliza flexbox e ajusta à largura dos filhos */
+    flex-wrap: nowrap; /* Garante que os itens não quebrem a linha */
+    border-radius: 10px; /* Adiciona bordas arredondadas de 10px */
+}
+
+.category-item {
+    display: inline-block; /* Exibe o elemento como um bloco inline */
+    margin-right: 10px; /* Adiciona uma margem direita de 10px */
+    padding-right: 10px; /* Adiciona um padding direito de 10px */
+    border-right: 1px solid #ddd; /* Adiciona uma borda direita cinza clara */
+}
+
+    .category-item:last-child {
+        border-right: none; /* Remove a borda direita do último item */
+    }
+
+.actions-cell {
+    white-space: nowrap; /* Garante que o conteúdo não quebre a linha */
+    width: 1%; /* Define a largura da célula para ocupar o mínimo possível */
+}
+
+.modal-popup {
+    background-color: #fff; /* Define a cor de fundo como branca */
+    border: 1px solid #ddd; /* Adiciona uma borda cinza clara */
+    padding: 20px; /* Adiciona um padding de 20px */
+    width: 300px; /* Define a largura do popup como 300px */
+    text-align: center; /* Centraliza o texto */
+}
+
+.modal-content {
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+}
+
+.modal-button {
+    margin: 10px; /* Adiciona uma margem de 10px ao redor do botão */
+}
+
+table thead tr:first-child th:first-child {
+    border-top-left-radius: 10px; /* Canto superior esquerdo arredondado */
+}
+
+table thead tr:first-child th:last-child {
+    border-top-right-radius: 10px; /* Canto superior direito arredondado */
+}
+
+
+/* Responsivo: Tablets em modo retrato e maiores */
+@media screen and (min-width: 768px) {
+    .body-content {
+        padding: 0; /* Remove o padding quando a largura mínima da tela for 768px */
+    }
+}
+
+/* Responsivo: Telas com largura máxima de 399px */
+@media (max-width: 399px) {
+    #container {
+        width: 100%; /* Define a largura do container para 100% */
+        min-width: 320px; /* Define a largura mínima do container para 320px */
+    }
+
+    body {
+        font-size: 80%; /* Reduz o tamanho da fonte para 80% */
+    }
+
+    .w-md-100 {
+        width: 100% !important; /* Define a largura para 100%, sobrescrevendo outras regras */
+    }
+
+    .fs-3 {
+        font-size: 1rem !important; /* Define o tamanho da fonte para 1rem, sobrescrevendo outras regras */
+    }
+
+    .container.w-50 {
+        width: 100% !important; /* Define a largura para 100%, sobrescrevendo outras regras */
+    }
+
+    .d-flex.align-items-center.p-1 {
+        flex-direction: column !important; /* Muda a direção do flexbox para coluna, sobrescrevendo outras regras */
+    }
+
+    .ms-4 {
+        margin-left: 0px !important; /* Define a margem esquerda como 0, sobrescrevendo outras regras */
+    }
+
+    .fieldDate {
+        max-width: 115px !important; /* Define a largura máxima como 115px, sobrescrevendo outras regras */
+        padding-left: 0px !important; /* Remove o padding à esquerda, sobrescrevendo outras regras */
+        padding-right: 0px !important; /* Remove o padding à direita, sobrescrevendo outras regras */
+        padding-top: 5px !important; /* Adiciona um padding superior de 5px, sobrescrevendo outras regras */
+        padding-bottom: 5px !important; /* Adiciona um padding inferior de 5px, sobrescrevendo outras regras */
+    }
+
+    .btn {
+        font-size: smaller !important; /* Define o tamanho da fonte como menor, sobrescrevendo outras regras */
+    }
+
+    .form-control-sm-text {
+        font-size: 11px !important; /* Define o tamanho da fonte como 11px, sobrescrevendo outras regras */
+    }
+
+}
+
+/* Responsivo: Telas com largura mínima de 400px e máxima de 560px */
+@media (min-width: 400px) and (max-width: 560px) {
+    #container {
+        width: 100%; /* Define a largura do container para 100% */
+        min-width: 560px; /* Define a largura mínima do container para 560px */
+    }
+
+    body {
+        font-size: 85%; /* Define o tamanho da fonte para 85% */
+    }
+
+    .w-md-100 {
+        width: 100% !important; /* Define a largura para 100%, sobrescrevendo outras regras */
+    }
+
+    .fs-3 {
+        font-size: 1rem !important; /* Define o tamanho da fonte para 1rem, sobrescrevendo outras regras */
+    }
+
+    .container.w-50 {
+        width: 100% !important; /* Define a largura para 100%, sobrescrevendo outras regras */
+    }
+
+    .ms-4 {
+        margin-left: 0px !important; /* Define a margem esquerda como 0, sobrescrevendo outras regras */
+    }
+
+    .fieldDate {
+        max-width: 150px !important; /* Define a largura máxima como 150px, sobrescrevendo outras regras */
+        padding-left: 0px !important; /* Remove o padding à esquerda, sobrescrevendo outras regras */
+        padding-right: 0px !important; /* Remove o padding à direita, sobrescrevendo outras regras */
+        padding-top: 5px !important; /* Adiciona um padding superior de 5px, sobrescrevendo outras regras */
+        padding-bottom: 5px !important; /* Adiciona um padding inferior de 5px, sobrescrevendo outras regras */
+    }
+}
+
+
+/* Responsivo: Telas com largura mínima de 561px e máxima de 767px */
+@media (min-width: 561px) and (max-width: 767px) {
+    #container {
+        width: 100%; /* Define a largura do container para 100% */
+        min-width: 640px; /* Define a largura mínima do container para 640px */
+        margin-left: 5% !important; /* Adiciona uma margem esquerda de 5%, sobrescrevendo outras regras */
+    }
+
+    .w-md-100 {
+        width: 100% !important; /* Define a largura para 100%, sobrescrevendo outras regras */
+    }
+
+    .container.w-50 {
+        width: 100% !important; /* Define a largura para 100%, sobrescrevendo outras regras */
+    }
+
+    .ms-4 {
+        margin-left: 0px !important; /* Define a margem esquerda como 0, sobrescrevendo outras regras */
+    }
+
+    .fieldDate {
+        max-width: 170px !important; /* Define a largura máxima como 170px, sobrescrevendo outras regras */
+        padding-left: 0px !important; /* Remove o padding à esquerda, sobrescrevendo outras regras */
+        padding-right: 0px !important; /* Remove o padding à direita, sobrescrevendo outras regras */
+        padding-top: 5px !important; /* Adiciona um padding superior de 5px, sobrescrevendo outras regras */
+        padding-bottom: 5px !important; /* Adiciona um padding inferior de 5px, sobrescrevendo outras regras */
+    }
+}
+
+
+/* Responsivo: Telas com largura mínima de 768px e máxima de 960px */
+@media (min-width: 768px) and (max-width: 960px) {
+    #container {
+        width: 100%; /* Define a largura do container para 100% */
+    }
+
+    .container.w-50 {
+        width: 75% !important; /* Define a largura para 75%, sobrescrevendo outras regras */
+    }
+
+        .container.w-50.mx-auto.bg-light.p-3.mt-3.border.rounded {
+            width: 75% !important; /* Define a largura para 75%, sobrescrevendo outras regras */
+        }
+}
+
+/* Responsivo: Telas com largura mínima de 961px e máxima de 992px */
+@media (min-width: 961px) and (max-width: 992px) {
+    #container {
+        width: 100%; /* Define a largura do container para 100% */
+    }
+
+    .container.w-50 {
+        width: 75% !important; /* Define a largura para 75%, sobrescrevendo outras regras */
+    }
+
+        .container.w-50.mx-auto.bg-light.p-3.mt-3.border.rounded {
+            width: 75% !important; /* Define a largura para 75%, sobrescrevendo outras regras */
+        }
+}
+
+
+/* Responsivo: Telas com largura mínima de 993px */
+@media (min-width: 993px) {
+    #container {
+        width: 100%; /* Define a largura do container para 100% */
+    }
+}
