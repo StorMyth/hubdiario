@@ -31,7 +31,7 @@ Conta de Email: Gmail para envio de alertas
   - Crie a base de dados no Microsoft SQL Server utilizando o script fornecido em /Database/CriarTabelas.sql.
   - Configure os Stored Procedures em /Database/ALL_Procedures.sql. Na pasta /Database/Stored Procedures estão todos os comandos em separado.
 
-3. Configure o servidor SMTP:
+3. Configure o serviço SMTP:
   - Configure uma conta Gmail para o envio de emails.
   - Atualize as configurações de SMTP no web.config ou app.config conforme necessário.
 
