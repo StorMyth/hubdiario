@@ -8,7 +8,7 @@ begin
 end
 go
 /* =======================================================================================
-	Description:	AutenticaÁ„o do utilizador
+	Description:	Autentica√ß√£o do utilizador
 ======================================================================================= */
 CREATE PROCEDURE [dbo].[p_AuthenticateUser]
     @EmailUser NVARCHAR(255),
@@ -116,7 +116,7 @@ begin
 end
 go
 /* =======================================================================================
-	Description:	EliminaÁ„o da conta do utilizador
+	Description:	Elimina√ß√£o da conta do utilizador
 ======================================================================================= */
 CREATE PROCEDURE [dbo].[p_DeleteUserAccount]
     @idUser INT
@@ -147,11 +147,11 @@ BEGIN
         -- Exclui o utilizador da tabela Users
         DELETE FROM Users WHERE idUser = @idUser;
 
-        -- Caso haja necessidade de verificar se a operaÁ„o foi bem-sucedida
+        -- Caso haja necessidade de verificar se a opera√ß√£o foi bem-sucedida
         IF @@ROWCOUNT = 0
         BEGIN
-            -- Nenhuma linha foi afetada, o utilizador n„o existe
-            RAISERROR('Utilizador n„o encontrado.', 16, 1);
+            -- Nenhuma linha foi afetada, o utilizador n√£o existe
+            RAISERROR('Utilizador n√£o encontrado.', 16, 1);
         END
     END TRY
     BEGIN CATCH
@@ -165,7 +165,7 @@ BEGIN
             @ErrorSeverity = ERROR_SEVERITY(),
             @ErrorState = ERROR_STATE();
 
-        -- LanÁa o erro para ser capturado no cÛdigo C#
+        -- Lan√ßa o erro para ser capturado no c√≥digo C#
         RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END
@@ -322,6 +322,7 @@ BEGIN
     FROM Categories
     WHERE idCategory = @CategoryId;
 END
+go
 /*#######################################################################################*/
 
 if object_id('p_GetItemsAndAlerts') is not null
@@ -521,7 +522,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verifica se j· existe uma categoria com o mesmo nome no tema
+    -- Verifica se j√° existe uma categoria com o mesmo nome no tema
     IF NOT EXISTS (SELECT 1 FROM Categories WHERE idTheme = @idTheme AND NameCategory = @NameCategory)
     BEGIN
         INSERT INTO Categories (idTheme, NameCategory, CreatedAt, UpdatedAt, Active)
@@ -529,7 +530,7 @@ BEGIN
     END
     ELSE
     BEGIN
-        RAISERROR('J· existe uma categoria com este nome no tema.', 16, 1);
+        RAISERROR('J√° existe uma categoria com este nome no tema.', 16, 1);
 		RETURN;
     END
 END
@@ -577,10 +578,10 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verifica se o tema j· existe para o utilizador
+    -- Verifica se o tema j√° existe para o utilizador
     IF EXISTS (SELECT 1 FROM Themes WHERE NameTheme = @NameTheme AND idUser = @idUser)
     BEGIN
-        RAISERROR('J· existe um tema com este nome.', 16, 1);
+        RAISERROR('J√° existe um tema com este nome.', 16, 1);
         RETURN;
     END
 
@@ -588,7 +589,7 @@ BEGIN
     INSERT INTO Themes (NameTheme, idUser, CreatedAt, UpdatedAt, Active)
     VALUES (@NameTheme, @idUser, GETDATE(), GETDATE(), 1);
 
-    -- ObtÈm o ID do tema inserido
+    -- Obt√©m o ID do tema inserido
     SET @idTheme = SCOPE_IDENTITY();
 END
 GO
@@ -614,11 +615,11 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        -- Verifica se o email j· est· registado
+        -- Verifica se o email j√° est√° registado
         IF EXISTS (SELECT 1 FROM Users WHERE EmailUser = @Email)
         BEGIN
-            -- Retorna erro customizado se o email j· existir
-            RAISERROR('O email j· est· registado.', 16, 1);
+            -- Retorna erro customizado se o email j√° existir
+            RAISERROR('O email j√° est√° registado.', 16, 1);
             ROLLBACK TRANSACTION;
             RETURN;
         END
@@ -674,7 +675,7 @@ begin
 end
 go
 /* =======================================================================================
-	Description:	AtualizaÁ„o do nome da categoria
+	Description:	Atualiza√ß√£o do nome da categoria
 ======================================================================================= */
 
 CREATE PROCEDURE [dbo].[p_UpdateCategory]
@@ -686,10 +687,10 @@ BEGIN
 
     DECLARE @idTheme INT;
 
-    -- ObtÈm o id do tema associado ‡ categoria
+    -- Obt√©m o id do tema associado √† categoria
     SELECT @idTheme = idTheme FROM Categories WHERE idCategory = @idCategory;
 
-    -- Verifica se j· existe outra categoria com o mesmo nome no tema
+    -- Verifica se j√° existe outra categoria com o mesmo nome no tema
     IF NOT EXISTS (SELECT 1 FROM Categories WHERE idTheme = @idTheme AND NameCategory = @NameCategory AND idCategory != @idCategory)
     BEGIN
         UPDATE Categories
@@ -699,7 +700,7 @@ BEGIN
     END
     ELSE
     BEGIN
-        RAISERROR('J· existe uma categoria com este nome no tema.', 16, 1);
+        RAISERROR('J√° existe uma categoria com este nome no tema.', 16, 1);
 		RETURN;
     END
 END
@@ -742,7 +743,7 @@ begin
 end
 go
 /* =======================================================================================
-	Description:	Atualiza para o prÛximo tempo de alerta
+	Description:	Atualiza para o pr√≥ximo tempo de alerta
 ======================================================================================= */
 CREATE PROCEDURE [dbo].[p_UpdateNextAlertTime]
     @AlertId INT,
@@ -775,15 +776,15 @@ BEGIN
 
     DECLARE @idUser INT;
 
-    -- ObtÈm o idUser com base no idTheme
+    -- Obt√©m o idUser com base no idTheme
     SELECT @idUser = idUser
     FROM Themes
     WHERE idTheme = @idTheme;
 
-    -- Verifica se o novo nome do tema j· existe para o utilizador
+    -- Verifica se o novo nome do tema j√° existe para o utilizador
     IF EXISTS (SELECT 1 FROM Themes WHERE NameTheme = @newName AND idUser = @idUser AND idTheme <> @idTheme)
     BEGIN
-        RAISERROR('J· existe um tema com este nome.', 16, 1);
+        RAISERROR('J√° existe um tema com este nome.', 16, 1);
         RETURN;
     END
 
@@ -801,7 +802,7 @@ begin
 end
 go
 /* =======================================================================================
-	Description:	AtualizaÁ„o do email do utilizador
+	Description:	Atualiza√ß√£o do email do utilizador
 ======================================================================================= */
 
 CREATE PROCEDURE [dbo].[p_UpdateUserEmail]
@@ -811,15 +812,15 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verifica se o novo email j· existe para outro utilizador
+    -- Verifica se o novo email j√° existe para outro utilizador
     IF EXISTS (SELECT 1 FROM [dbo].[Users] WHERE EmailUser = @NewEmail AND idUser <> @idUser)
     BEGIN
-        -- Retorna erro com mensagem a indicar que o email j· est· em uso
-        RAISERROR('Email j· est· em uso por outro utilizador.', 16, 1);
+        -- Retorna erro com mensagem a indicar que o email j√° est√° em uso
+        RAISERROR('Email j√° est√° em uso por outro utilizador.', 16, 1);
         RETURN;
     END
 
-    -- Atualiza o email se n„o existir duplicata
+    -- Atualiza o email se n√£o existir duplicata
     UPDATE [dbo].[Users]
     SET EmailUser = @NewEmail,
         UpdatedAt = GETDATE()
@@ -834,7 +835,7 @@ begin
 end
 go
 /* =======================================================================================
-	Description:	AtualizaÁ„o da palavra-passe
+	Description:	Atualiza√ß√£o da palavra-passe
 ======================================================================================= */
 CREATE PROCEDURE p_UpdateUserPassword
     @idUser INT,
@@ -844,7 +845,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verifica se a palavra-passe atual est· correta
+    -- Verifica se a palavra-passe atual est√° correta
     IF EXISTS (SELECT 1 FROM Users WHERE idUser = @idUser AND PasswordUser = @CurrentPassword)
     BEGIN
         -- Atualiza a palavra-passe
@@ -857,7 +858,7 @@ BEGIN
     ELSE
     BEGIN
         -- Retorna erro se a palavra-passe atual estiver incorreta
-        RAISERROR('A palavra-passe atual est· incorreta.', 16, 1);
+        RAISERROR('A palavra-passe atual est√° incorreta.', 16, 1);
         RETURN;
     END
 END
